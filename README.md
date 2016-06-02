@@ -8,6 +8,15 @@ connect-dynamodb is a DynamoDB session store backed by the [aws-sdk](https://git
 ## Installation
 
 	  $ npm install connect-dynamodb
+	  
+## What is different in this fork?
+
+- This fork was created to add a specific and somewhat-unique feature around making sure that a given user only has one active session.
+  This works by exposing a new method on the store called `destroyOtherSessionsForUser`. This would then be called by your passport code 
+  post-login to effectively kill all other sessions that the user has. Our specific use-case is around named-user licensing. 
+- It has a loose dependency on [passport](http://passportjs.org/).
+- When creating the dynamodb table, it specifies a range key for the user, and a global secondary index that has the user has the hash key and the session id as the range key.
+  The index is used to query/lookup all session by user.
 
 ## Options
 
@@ -18,8 +27,11 @@ connect-dynamodb is a DynamoDB session store backed by the [aws-sdk](https://git
   - `AWSRegion` Optional AWS region (defaults to 'us-east-1', ignored if using `AWSConfigPath` or `AWSConfigJSON`)
   - `table` Optional DynamoDB server session table name (defaults to "sessions")
   - `hashKey` Optional hash key (defaults to "id")
+  - `rangeKey` Optional (defaults to "user")
   - `prefix` Optional key prefix (defaults to "sess")
   - `reapInterval` Optional - how often expired sessions should be cleaned up (defaults to 600000)
+  - `userPath` Optional - the "property path" to determine the current user in the session object.
+     For example, when using passport, it would be the string `passport.user`
 
 ## Usage
 
