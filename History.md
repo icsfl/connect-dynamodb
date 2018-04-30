@@ -1,3 +1,33 @@
+2.0.0 / 2017-08-19
+==================
+
+  * 1.0.12 had breaking change with dates
+
+1.0.12 / 2017-07-03
+==================
+
+  * Implemented touch as requested on #23 and changed the expires field to work on seconds units instead of millis to address #39. This way to use TTL we just need to enable it on the table and select the 'expires' field. (https://github.com/ca98am79/connect-dynamodb/pull/43)
+
+1.0.11 / 2017-03-14
+==================
+
+  * Configurable ProvisionedThroughput read/write capacity units (https://github.com/ca98am79/connect-dynamodb/pull/40)
+
+1.0.10 / 2017-02-27
+==================
+
+  * Set Consistent read by default (https://github.com/ca98am79/connect-dynamodb/pull/37)
+
+1.0.9 / 2016-08-21
+==================
+
+  * Fix bug with reap method (https://github.com/ca98am79/connect-dynamodb/issues/33)
+
+1.0.8 / 2016-07-18
+==================
+
+  * Fix issue with reap method (https://github.com/ca98am79/connect-dynamodb/issues/27)
+
 1.0.7 / 2016-01-29
 ==================
 

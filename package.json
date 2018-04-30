@@ -1,16 +1,20 @@
 {
   "name": "connect-dynamodb",
   "description": "DynamoDB session store for Connect",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "author": "Mike Carson <ca98am79@gmail.com> (http://ca98am79.com)",
   "main": "./index.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "aws-sdk": "*",
     "connect": "*"
   },
   "devDependencies": {
-    "should": "*",
-    "mocha": "*"
+    "express-session": "*",
+    "mocha": "*",
+    "should": "*"
   },
   "engines": {
     "node": "*"
